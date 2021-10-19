@@ -17,21 +17,21 @@ class Morse:
         ".-...": "&", ".--.-.": "@", ".-.-.": "+", "-.----.": "^", "------.": "~",
         "-. - -.--": "[", "-.---.-": "]",
     }
-    char_dict = {val:key for key,val in code_dict.items()}
+    char_dict = {val: key for key, val in code_dict.items()}
 
-    def decode(self,str,sep=" "):
-        str_list = str.split(sep)
+    def decode(self, code, sep=" "):
+        str_list = code.split(sep)
         res = ""
         for s in str_list:
-            res += self.code_dict.get(s,s.replace(".","0").replace("-","1"))
+            res += self.code_dict.get(s, s.replace(".", "0").replace("-", "1"))
         return res
 
-    def encode(self,str):
+    def encode(self, content):
         res = ""
-        for s in str:
+        for s in content:
             if not s.strip():
                 continue
-            res += self.char_dict.get(s,"?") + " "
+            res += self.char_dict.get(s, "?") + " "
         return res
 
 
